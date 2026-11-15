@@ -1,0 +1,29 @@
+
+# Python virtual environment
+.venv/
+
+# Python generated files
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+
+# Raw and processed datasets
+data/raw/
+data/processed/
+data/training/
+
+# Saved models and vector indexes
+models/
+*.faiss
+*.pkl
+
+# Notebook temporary files
+.ipynb_checkpoints/
+
+# Local logs
+*.log
