@@ -2,6 +2,7 @@
 from src.data_preparation.whatsapp_parser import (
     parse_whatsapp_message,
     parse_whatsapp_chat,
+    audit_whatsapp_chat,
 )
 
 
@@ -53,3 +54,32 @@ def test_invalid_message():
     )
 
     assert result is None
+
+
+def test_system_message_not_appended_to_customer():
+
+    chat = """15/11/2026, 09:30 - Client: Good morning
+15/11/2026, 09:31 - Client joined using this group's invite link
+15/11/2026, 09:32 - Laboratory: How can we help?"""
+
+    results = parse_whatsapp_chat(chat)
+
+    assert len(results) == 2
+
+    assert results[0]["message"] == "Good morning"
+
+    assert results[1]["message"] == "How can we help?"
+
+
+
+def test_chat_audit():
+
+    chat = """15/11/2026, 09:30 - Client: Good morning
+15/11/2026, 09:31 - Client joined using this group's invite link
+15/11/2026, 09:32 - Laboratory: How can we help?"""
+
+    result = audit_whatsapp_chat(chat)
+
+    assert result["user_messages"] == 2
+    assert result["other_timestamped_records"] == 1
+    assert result["total_timestamped_records"] == 3
