@@ -27,3 +27,5 @@ models/
 
 # Local logs
 *.log
+
+.pytest_cache/
