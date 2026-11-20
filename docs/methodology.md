@@ -39,3 +39,28 @@ The proposed research will follow these stages:
 8. End-to-end evaluation, error analysis and prototype deployment.
 
 The detailed procedures, experimental configurations and findings will be documented as implementation progresses.
+
+
+## 3.4 Preliminary Data Acquisition Investigation
+
+A preliminary technical investigation was undertaken to examine how laboratory test information could be acquired from the publicly accessible Dr. Kalebi Labs website.
+
+Historical Python scripts were developed to investigate website structure, JavaScript behaviour, catalogue navigation, search functionality and browser network responses.
+
+One historical implementation used Playwright to observe the network responses generated when the laboratory catalogue was loaded. The script targeted a structured JSON response and included procedures for extracting laboratory test attributes, standardizing text, constructing evidence documents and assessing data completeness.
+
+The historical scripts have been preserved as research evidence. Their execution outcomes and compatibility with the current website will require verification before being reported as reproducible experimental results.
+
+## 3.5 Data Quality and Evidence Sufficiency
+
+The study will assess catalogue data quality using measures of field completeness, record identity, duplication, consistency and suitability for answering customer enquiries.
+
+Field completeness will be calculated as the proportion of records containing a non-empty value for a specified attribute.
+
+However, field completeness alone will not be treated as evidence of accuracy or sufficiency.
+
+Evidence sufficiency will be evaluated in relation to the information required by each customer enquiry. For example, a record containing a test name and turnaround time may be sufficient for a turnaround-time enquiry but insufficient for a question concerning specimen collection instructions.
+
+The proposed framework will distinguish between missing information, unsupported conclusions and enquiries requiring operational or clinical intervention.
+
+The relationship between retrieved evidence and escalation decisions will be evaluated during system development.

@@ -42,3 +42,34 @@ This document records major technical and methodological decisions, the alternat
 **Rationale:** The extraction method must be justified using the structure, accessibility, reliability and authorization requirements of the DKL catalogue.
 
 **Status:** Pending review of previous investigations.
+
+
+## Decision 005 — Catalogue Record Identity and Deduplication
+
+**Historical implementation:** SHA-256 hashing of constructed evidence text, followed by removal of duplicate hashes.
+
+**Identified limitation:** Identical evidence text does not necessarily establish that two records represent the same catalogue entry.
+
+**Proposed improvement:** Preserve the raw catalogue, validate source identifiers, assess duplicate IDs and codes, and distinguish record-level duplication from content-level duplication.
+
+**Justification:** This approach reduces the risk of excluding legitimate catalogue entries and improves data traceability.
+
+**Status:** Proposed; pending implementation and evaluation.
+
+
+
+## Decision 006 — Escalation Training Dataset Design
+
+**Proposed target:** Binary classification, with 0 representing ANSWER and 1 representing ESCALATE.
+
+**Proposed inputs:** Anonymized customer enquiries and features derived from information available at inference time.
+
+**Alternatives:** Question-only classification, evidence-aware classification and exclusively rule-based routing.
+
+**Rationale:** Escalation requirements may depend on both the nature of the enquiry and the sufficiency of retrieved evidence. A question-only model may therefore fail to account for missing or changing catalogue information.
+
+**Data quality requirements:** Human-reviewed labels, anonymization, conversation-level grouping, documented annotation criteria and protection against data leakage.
+
+**Evaluation:** Compare rule-based, supervised and hybrid approaches using class-specific precision, recall, F1-score and confusion matrices.
+
+**Status:** Proposed; pending dataset validation and experimentation.

@@ -1,0 +1,51 @@
+services:
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    env_file:
+      - .env
+
+    environment:
+      HF_HOME: /app/cache/huggingface
+
+    ports:
+      - "127.0.0.1:8000:8000"
+
+    volumes:
+      - huggingface_cache:/app/cache/huggingface
+
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=5)"
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 180s
+
+    restart: "no"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+
+    environment:
+      RAG_API_URL: http://backend:8000
+
+    ports:
+      - "127.0.0.1:8501:8501"
+
+    depends_on:
+      backend:
+        condition: service_healthy
+
+    restart: "no"
+
+volumes:
+  huggingface_cache:

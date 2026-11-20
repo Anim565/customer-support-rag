@@ -1,0 +1,42 @@
+{
+  "knowledge_base_version": "20261116T084302Z",
+  "artifact_count": 7,
+  "total_bytes": 9348113,
+  "artifacts": [
+    {
+      "path": "data/private/modelling_v1/classifier.joblib",
+      "bytes": 672558,
+      "sha256": "2e4f73b5854fe9292d508b5e17395034458f454963324c22f66fd073815f04e7"
+    },
+    {
+      "path": "data/private/modelling_v1/policy.json",
+      "bytes": 504,
+      "sha256": "257ec869c75730bc9ea8cc6e91b9f9f6e6c38feb0396b5febcca77d06df384d6"
+    },
+    {
+      "path": "data/knowledge_base/current.json",
+      "bytes": 306,
+      "sha256": "cf046fb3cca1ed217c864820a4f5a638ea691b71ea3ff5b70ef9354eef5d1184"
+    },
+    {
+      "path": "data/knowledge_base/versions/20261116T084302Z/catalogue.csv",
+      "bytes": 1484224,
+      "sha256": "10866a258fb07be94d3cce5cc05b18036cea9e98df39d379d2b45b61fca19142"
+    },
+    {
+      "path": "data/knowledge_base/versions/20261116T084302Z/catalogue.faiss",
+      "bytes": 3291693,
+      "sha256": "6d93278592ed4fe2b8d8d2c267d185ea6096d5b6e4ffff52d773901ef6a96749"
+    },
+    {
+      "path": "data/knowledge_base/versions/20261116T084302Z/documents.jsonl",
+      "bytes": 3897605,
+      "sha256": "ac2e89a610575bb72086820f6b23f2396e43a9f6956bd61ddb2927d4f4c556a7"
+    },
+    {
+      "path": "data/knowledge_base/versions/20261116T084302Z/quality_report.json",
+      "bytes": 1223,
+      "sha256": "9d99b0a3532e2bfb1171b080ae1c18b9ab154b6ec669fb61874542e73888af9b"
+    }
+  ]
+}

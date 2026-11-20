@@ -1,0 +1,6 @@
+
+
+# Preserve exact bytes of frozen research artifacts
+/data/knowledge_base/** -text
+/data/private/modelling_v1/classifier.joblib -text
+/data/private/modelling_v1/policy.json -text

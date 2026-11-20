@@ -1,31 +1,84 @@
-
-# Python virtual environment
+# Python environments
 .venv/
+venv/
 
 # Python generated files
 __pycache__/
 *.pyc
 .pytest_cache/
 
-# Credentials and local configuration
+# Credentials
 .env
 .env.*
 !.env.example
+*.pem
+*.key
 
-# Raw and processed datasets
-data/raw/
-data/processed/
-data/training/
+# Confidential and research datasets
+/data/
+/models/
 
-# Saved models and vector indexes
-models/
-*.faiss
+# Database and extraction caches
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.db
+
+# Serialized artifacts - require explicit review
+*.joblib
 *.pkl
+*.faiss
 
-# Notebook temporary files
+# Local archives
+/archive/
+/archive_backup
+/research/legacy_scripts/
+
+# Unreviewed evaluation data
+/evaluation_cases*.csv
+
+# Temporary notebooks and backups
 .ipynb_checkpoints/
+*_backup.py
+app_standalone.py
 
 # Local logs
 *.log
 
-.pytest_cache/
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Local editor configuration
+.vscode/
+
+/01_exploratory_data_analysis.ipynb
+
+# BEGIN APPROVED DEPLOYMENT ARTIFACTS
+
+!/data/
+/data/*
+
+!/data/knowledge_base/
+/data/knowledge_base/*
+!/data/knowledge_base/current.json
+!/data/knowledge_base/versions/
+/data/knowledge_base/versions/*
+
+!/data/knowledge_base/versions/20261116T084302Z/
+/data/knowledge_base/versions/20261116T084302Z/*
+
+!/data/knowledge_base/versions/20261116T084302Z/catalogue.csv
+!/data/knowledge_base/versions/20261116T084302Z/catalogue.faiss
+!/data/knowledge_base/versions/20261116T084302Z/documents.jsonl
+!/data/knowledge_base/versions/20261116T084302Z/quality_report.json
+
+!/data/private/
+/data/private/*
+!/data/private/modelling_v1/
+/data/private/modelling_v1/*
+
+!/data/private/modelling_v1/classifier.joblib
+!/data/private/modelling_v1/policy.json
+
+# END APPROVED DEPLOYMENT ARTIFACTS

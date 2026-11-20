@@ -3,8 +3,9 @@ from src.data_preparation.whatsapp_parser import (
     parse_whatsapp_message,
     parse_whatsapp_chat,
     audit_whatsapp_chat,
+    classify_whatsapp_record,
+    audit_whatsapp_records,
 )
-
 
 def test_android_message():
 
@@ -83,3 +84,57 @@ def test_chat_audit():
     assert result["user_messages"] == 2
     assert result["other_timestamped_records"] == 1
     assert result["total_timestamped_records"] == 3
+
+
+
+def test_record_classification():
+
+    user_message = (
+        "15/11/2026, 09:30 - Client: "
+        "What is the price of a CBC?"
+    )
+
+    system_event = (
+        "15/11/2026, 09:31 - "
+        "Client joined using this group's invite link"
+    )
+
+    unrecognized = (
+        "15/11/2026, 09:32 - "
+        "Client requested results"
+    )
+
+    continuation = "2. Liver Function Tests"
+
+    assert classify_whatsapp_record(
+        user_message
+    ) == "USER_MESSAGE"
+
+    assert classify_whatsapp_record(
+        system_event
+    ) == "SYSTEM_EVENT"
+
+    assert classify_whatsapp_record(
+        unrecognized
+    ) == "UNRECOGNIZED"
+
+    assert classify_whatsapp_record(
+        continuation
+    ) == "CONTINUATION"
+
+
+def test_detailed_record_audit():
+
+    chat = """15/11/2026, 09:30 - Client: Good morning
+15/11/2026, 09:31 - Client joined using this group's invite link
+15/11/2026, 09:32 - Client requested results
+15/11/2026, 09:33 - Laboratory: How can we help?"""
+
+    result = audit_whatsapp_records(chat)
+
+    assert result["counts"]["USER_MESSAGE"] == 2
+    assert result["counts"]["SYSTEM_EVENT"] == 1
+    assert result["counts"]["UNRECOGNIZED"] == 1
+
+    assert result["total_records"] == 4
+    assert len(result["unrecognized_records"]) == 1

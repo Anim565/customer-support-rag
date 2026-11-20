@@ -60,6 +60,38 @@ def is_timestamped_record(line):
 
 
 
+def classify_whatsapp_record(line):
+    """
+    Classify a timestamped WhatsApp record.
+
+    Returns USER_MESSAGE, SYSTEM_EVENT,
+    UNRECOGNIZED, or CONTINUATION.
+    """
+
+    if parse_whatsapp_message(line) is not None:
+        return "USER_MESSAGE"
+
+    if not is_timestamped_record(line):
+        return "CONTINUATION"
+
+    system_patterns = [
+        r"joined using this group's invite link",
+        r"left the group",
+        r"was added",
+        r"was removed",
+        r"messages and calls are end-to-end encrypted",
+        r"changed the group description",
+        r"changed this group's icon",
+    ]
+
+    for pattern in system_patterns:
+        if re.search(pattern, line, re.IGNORECASE):
+            return "SYSTEM_EVENT"
+
+    return "UNRECOGNIZED"
+
+
+
 def parse_whatsapp_chat(chat_text):
     """
     Parse a WhatsApp conversation.
@@ -129,6 +161,39 @@ def audit_whatsapp_chat(chat_text):
             user_messages + other_timestamped_records
         )
     }
+
+
+def audit_whatsapp_records(chat_text):
+    """
+    Audit WhatsApp record classifications.
+
+    Returns counts and records requiring review.
+    """
+
+    counts = {
+        "USER_MESSAGE": 0,
+        "SYSTEM_EVENT": 0,
+        "UNRECOGNIZED": 0,
+    }
+
+    unrecognized_records = []
+
+    for line in chat_text.splitlines():
+
+        category = classify_whatsapp_record(line)
+
+        if category in counts:
+            counts[category] += 1
+
+        if category == "UNRECOGNIZED":
+            unrecognized_records.append(line)
+
+    return {
+        "counts": counts,
+        "unrecognized_records": unrecognized_records,
+        "total_records": sum(counts.values()),
+    }
+
 
 
 

@@ -29,3 +29,24 @@ def test_unknown_preserved_for_review(tmp_path):
     result = process(source, tmp_path / 'output')
     assert result['UNRECOGNIZED'] == 1
     assert result['review_records'] == 1
+
+from src.data_preparation.pipeline import privacy_risk_flags
+
+def test_contextual_patient_name():
+    cleaned = scrub('Patient Jane Doe needs a CBC')
+    assert '[PERSON]' in cleaned and 'Jane Doe' not in cleaned and 'CBC' in cleaned
+
+def test_uncertain_name_flagged():
+    original = 'Please check John Kamau for HbA1c'
+    cleaned = scrub(original)
+    assert 'CAPITALIZED_PHRASE_REVIEW' in privacy_risk_flags(original, cleaned)
+
+def test_review_flag_propagated(tmp_path):
+    source = tmp_path / 'input'; source.mkdir()
+    (source / 'chat.txt').write_text('[15/11/2026, 09:30:00] Client: Please check John Kamau for HbA1c')
+    report = process(source, tmp_path / 'output')
+    assert report['privacy_review_messages'] == 1
+    import csv
+    with (tmp_path / 'output/messages_anon.csv').open() as f:
+        row = next(csv.DictReader(f))
+    assert row['privacy_review_required'] == 'True'

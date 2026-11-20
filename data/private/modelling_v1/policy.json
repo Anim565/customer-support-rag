@@ -1,0 +1,21 @@
+{
+  "model": "XGB",
+  "feature": "D",
+  "strategy": "real",
+  "params": {
+    "weighted": false
+  },
+  "threshold": 0.7423206567764282,
+  "all_escalate": false,
+  "score_type": "positive_class_score",
+  "seed": 42,
+  "kb_version": "20261116T084302Z",
+  "development_sha256": "d15d8d7ec6e1f5012b67f23cb6d3b38108cfdc8df606ce720d1997c9a3c24f87",
+  "versions": {
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "pandas": "3.1.1",
+    "numpy": "2.5.5",
+    "joblib": "1.6.0"
+  }
+}

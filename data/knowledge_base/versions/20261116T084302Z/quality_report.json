@@ -1,0 +1,57 @@
+{
+  "source_file": "data\\raw\\catalogue\\catalogue_20261116T084302Z.json",
+  "source_sha256": "ff27617e78262dae03e911df5dfa0352feed3c532ec938854305261ac379032f",
+  "record_count": 2143,
+  "unique_codes": 2143,
+  "completeness": {
+    "code": {
+      "present": 2143,
+      "total": 2143
+    },
+    "name": {
+      "present": 2143,
+      "total": 2143
+    },
+    "synonyms": {
+      "present": 1502,
+      "total": 2143
+    },
+    "specimenReqQuantity": {
+      "present": 1424,
+      "total": 2143
+    },
+    "instructions": {
+      "present": 1210,
+      "total": 2143
+    },
+    "description": {
+      "present": 1280,
+      "total": 2143
+    },
+    "testDetails": {
+      "present": 500,
+      "total": 2143
+    },
+    "reportDays": {
+      "present": 2143,
+      "total": 2143
+    },
+    "reportDate": {
+      "present": 2143,
+      "total": 2143
+    },
+    "testDays": {
+      "present": 2143,
+      "total": 2143
+    },
+    "rate": {
+      "present": 2143,
+      "total": 2143
+    }
+  },
+  "duplicate_names": 6,
+  "records_with_quality_flags": 2064,
+  "index_created": true,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "index_size": 2143
+}
