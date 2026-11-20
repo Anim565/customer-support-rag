@@ -10,7 +10,7 @@ November 2026
 ## Quick Start
 
 The frozen trained classifier and versioned laboratory
-knowledge base are included in this private repository.
+knowledge base are included in this public repository.
 
 The application can be launched using Docker without
 retraining the machine learning model or rebuilding
@@ -18,7 +18,7 @@ the knowledge base.
 
 ### Prerequisites
 
-- Authorized access to this private GitHub repository.
+- Access to this public GitHub repository.
 - Git.
 - Docker Desktop with Docker Compose.
 - Internet access for the embedding model and LLM service.
@@ -715,10 +715,10 @@ Never commit API credentials to version control.
 
 ## 19. Included Research and Deployment Artifacts
 
-This private repository includes the seven approved frozen
+This public repository includes the seven approved frozen
 deployment artifacts required to run the research prototype.
 
-Distribution is restricted to authorized academic assessment.
+The included deployment artifacts are authorized for public distribution. Customer-level research datasets remain restricted.
 
 The included artifact layout is:
 
@@ -1006,7 +1006,7 @@ docs/reproducibility_validation.md.
 9. Conservative guardrails that can reject valid answers.
 10. Human annotation without independently established
     inter-annotator agreement.
-11. Restricted data and artifact distribution.
+11. Restricted access to underlying customer-level research datasets.
 12. Incomplete reconstruction of some historical data
     preparation steps.
 13. No live human escalation integration or production
