@@ -24,9 +24,6 @@ These uses are distinguished below.
 
 ChatGPT assisted with:
 
-- Research problem formulation and objective refinement.
-- Understanding machine learning and information retrieval
-  techniques.
 - Comparing alternative methodological approaches.
 - Research architecture and workflow design.
 - Python script and notebook code generation.
@@ -41,9 +38,8 @@ ChatGPT assisted with:
 - API and frontend implementation.
 - Docker configuration and deployment troubleshooting.
 - Repository organization and reproducibility documentation.
-- Academic writing, diagrams and presentation preparation.
 
-AI assistance contributed substantially to the generation
+AI assistance contributed to the generation
 and revision of research implementation code.
 
 ## 3. AI within the research framework
@@ -85,7 +81,7 @@ Human review formed part of the privacy and evidence
 annotation procedures.
 
 AI-generated suggestions were not treated as inherently
-correct or independently validated.
+correct but independently validated.
 
 ## 5. Data protection
 
@@ -126,9 +122,8 @@ the implemented framework.
 The researcher accepts responsibility for the accuracy,
 integrity and presentation of the submitted research.
 
-This disclosure describes the substantive use of AI
-assistance throughout the project and is not intended to
-represent AI use as limited to language editing.
+This disclosure describes the use of AI
+assistance throughout the project.
 
 The disclosure should be read together with the applicable
 university and course academic integrity requirements.
